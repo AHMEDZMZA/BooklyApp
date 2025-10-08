@@ -25,7 +25,7 @@ class HomeView extends StatelessWidget {
             const SliverToBoxAdapter(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
-                child: Text("Best Seller", style: AppStyles.textStyle18Bold),
+                child: Text("Best Seller", style: AppStyles.textStyle18BoldWhite),
               ),
             ),
 
