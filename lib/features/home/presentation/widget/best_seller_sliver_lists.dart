@@ -59,10 +59,7 @@ class BestSellerSliverLists extends StatelessWidget {
 
                             const SizedBox(height: 5),
                             Text(
-                              (state.books[index].volumeInfo?.authors?.join(
-                                    ', ',
-                                  ) ??
-                                  'Unknown Author'),
+                              "${state.books[index].volumeInfo?.authors?? 'Unknown Author'}",
                               style: AppStyles.textStyle14W400,
                             ),
                             const SizedBox(height: 5),

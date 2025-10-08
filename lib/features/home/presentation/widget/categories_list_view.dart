@@ -28,21 +28,29 @@ class CategoriesListView extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: state.books.length,
                   itemBuilder: (context, index) {
-                    return Container(
-                      margin: const EdgeInsets.only(right: 15),
-                      width: index == 0 ? 170 : 150,
-                      //height: 224,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        image: DecorationImage(
-                          image: NetworkImage(
-                            state
-                                    .books[index]
-                                    .volumeInfo!
-                                    .imageLinks!
-                                    .thumbnail!,
+                    return GestureDetector(
+                      onTap: (){
+                        Navigator.pushNamed(context, '/BookDetailsView', arguments: {
+                          'book': state.books[index],
+                          'books': state.books
+                        });
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.only(right: 15),
+                        width: index == 0 ? 170 : 150,
+                        //height: 224,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          image: DecorationImage(
+                            image: NetworkImage(
+                              state
+                                      .books[index]
+                                      .volumeInfo!
+                                      .imageLinks!
+                                      .thumbnail!,
+                            ),
+                            fit: BoxFit.cover,
                           ),
-                          fit: BoxFit.cover,
                         ),
                       ),
                     );

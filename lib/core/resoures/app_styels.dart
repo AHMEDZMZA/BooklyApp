@@ -10,6 +10,13 @@ abstract class AppStyles {
   static const TextStyle textStyle18Bold = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.bold,
+    color: Colors.black,
+  );
+
+  static const TextStyle textStyle18BoldWhite = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+    color: Colors.white,
   );
 
   ///------------------------------------------------------///
