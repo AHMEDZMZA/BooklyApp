@@ -25,6 +25,7 @@ class SliversAppBar extends StatelessWidget {
                 height: 30,
                 width: 75,
                 filterQuality: FilterQuality.low,
+                fit: BoxFit.fill,
               ),
               IconButton(
                 onPressed: () {},

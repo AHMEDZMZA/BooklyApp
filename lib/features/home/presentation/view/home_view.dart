@@ -18,13 +18,13 @@ class HomeView extends StatelessWidget {
             const SliverToBoxAdapter(child: SizedBox(height: 20)),
 
             /// Categories
-            const CategoriesListView(),
+            const CategoriesListView(index: 0),
             const SliverToBoxAdapter(child: SizedBox(height: 20)),
 
             /// Best Seller
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                padding: EdgeInsets.symmetric(horizontal: 20.0),
                 child: Text("Best Seller", style: AppStyles.textStyle18Bold),
               ),
             ),
@@ -39,3 +39,11 @@ class HomeView extends StatelessWidget {
     );
   }
 }
+
+/*
+BlocProvider(
+      create: (context) => GetBookCubit(
+        HomeRepoImple(apiService: ApiService(dio: Dio())),
+      )..fetchBook(),
+      child:
+ */
