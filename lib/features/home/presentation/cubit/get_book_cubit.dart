@@ -10,20 +10,20 @@ class GetBookCubit extends Cubit<GetBookState> {
 
   GetBookCubit(this.homeRepo) : super(GetBookInitial());
 
-  void fetchBook() async {
+   fetchBook() async {
     emit(GetBookLoading());
     var result = await homeRepo.fetchAllBook();
     result.fold(
-      (error) => emit(GetBookFailure(errorMassage: error.errorMassage)),
+      (error) => emit(GetBookFailure(errorMassage: "Check Your Internet")),
       (books) => emit(GetBookSuccess(books: books)),
     );
   }
 
-  void fetchFreeBook() async {
+   fetchFreeBook() async {
     emit(GetBookLoading());
     var result = await homeRepo.fetchFreeAllBook();
     result.fold(
-      (error) => emit(GetBookFailure(errorMassage: error.errorMassage)),
+      (error) => emit(GetBookFailure(errorMassage: "Check Your Internet")),
       (books) => emit(GetBookSuccess(books: books)),
     );
   }

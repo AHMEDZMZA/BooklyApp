@@ -59,7 +59,7 @@ class BestSellerSliverLists extends StatelessWidget {
 
                             const SizedBox(height: 5),
                             Text(
-                              "${state.books[index].volumeInfo?.authors?? 'Unknown Author'}",
+                              "${state.books[index].volumeInfo?.authors ?? 'Unknown Author'}",
                               style: AppStyles.textStyle14W400,
                             ),
                             const SizedBox(height: 5),
@@ -93,7 +93,9 @@ class BestSellerSliverLists extends StatelessWidget {
               }, childCount: state.books.length),
             );
           } else if (state is GetBookFailure) {
-            return SliverToBoxAdapter(child: Text(state.errorMassage));
+            return SliverToBoxAdapter(
+              child: Center(child: Text(state.errorMassage)),
+            );
           }
           return SliverToBoxAdapter(
             child: Center(child: CircularProgressIndicator()),

@@ -29,11 +29,15 @@ class CategoriesListView extends StatelessWidget {
                   itemCount: state.books.length,
                   itemBuilder: (context, index) {
                     return GestureDetector(
-                      onTap: (){
-                        Navigator.pushNamed(context, '/BookDetailsView', arguments: {
-                          'book': state.books[index],
-                          'books': state.books
-                        });
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          '/BookDetailsView',
+                          arguments: {
+                            'book': state.books[index],
+                            'books': state.books,
+                          },
+                        );
                       },
                       child: Container(
                         margin: const EdgeInsets.only(right: 15),
@@ -44,10 +48,10 @@ class CategoriesListView extends StatelessWidget {
                           image: DecorationImage(
                             image: NetworkImage(
                               state
-                                      .books[index]
-                                      .volumeInfo!
-                                      .imageLinks!
-                                      .thumbnail!,
+                                  .books[index]
+                                  .volumeInfo!
+                                  .imageLinks!
+                                  .thumbnail!,
                             ),
                             fit: BoxFit.cover,
                           ),
@@ -59,7 +63,9 @@ class CategoriesListView extends StatelessWidget {
               ),
             );
           } else if (state is GetBookFailure) {
-            return SliverToBoxAdapter(child: Text(state.errorMassage));
+            return SliverToBoxAdapter(
+              child: Center(child: Text(state.errorMassage)),
+            );
           } else {
             return SliverToBoxAdapter(
               child: Center(child: CircularProgressIndicator()),
