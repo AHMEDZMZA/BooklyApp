@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/resoures/app_images.dart';
 import '../../../../core/resoures/app_styels.dart';
-import '../bloc/animation_bloc.dart';
+import '../../manager/bloc/animation_bloc.dart';
 
 class SplashBody extends StatefulWidget {
   const SplashBody({super.key});

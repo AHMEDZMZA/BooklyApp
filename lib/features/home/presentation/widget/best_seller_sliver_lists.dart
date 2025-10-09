@@ -1,10 +1,10 @@
-import 'package:books/features/home/presentation/cubit/get_book_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/network/api_service.dart';
 import '../../../../core/resoures/app_styels.dart';
 import '../../data/repo/home_repo_imple.dart';
+import '../../manager/cubit/get_book_cubit.dart';
 
 class BestSellerSliverLists extends StatelessWidget {
   const BestSellerSliverLists({super.key});
