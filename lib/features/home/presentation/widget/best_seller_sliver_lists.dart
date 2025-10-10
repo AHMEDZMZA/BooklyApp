@@ -56,6 +56,8 @@ class BestSellerSliverLists extends StatelessWidget {
                             Text(
                               state.books[index].volumeInfo?.title ??
                                   "No Title Available",
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
                               style: AppStyles.textStyle20Bold,
                             ),
 
@@ -69,7 +71,7 @@ class BestSellerSliverLists extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  " Price : ${state.books[index].saleInfo?.listPrice?.amount.toString() ?? "No Price Available"} ",
+                                  " Price : ${state.books[index].saleInfo?.listPrice?.amount.toString() ?? "Free"} ",
                                 ),
                                 Row(
                                   children: const [

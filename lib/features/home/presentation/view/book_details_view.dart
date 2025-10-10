@@ -12,6 +12,7 @@ class BookDetailsView extends StatelessWidget {
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     final BookModel book = args['book'];
     final List<BookModel> books = args['books'];
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -40,7 +41,8 @@ class BookDetailsView extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15),
                     image: DecorationImage(
                       image: NetworkImage(
-                        book.volumeInfo?.imageLinks?.thumbnail ?? "",
+                        book.volumeInfo?.imageLinks?.thumbnail ??
+                            " No Book Similar ",
                       ),
                       fit: BoxFit.cover,
                     ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 import '../../../../core/network/api_service.dart';
+import '../../../../core/resoures/app_colors.dart';
 import '../../data/repo/home_repo_imple.dart';
 import '../../manager/cubit/get_book_cubit.dart';
 
@@ -30,15 +31,40 @@ class CategoriesListView extends StatelessWidget {
                   itemCount: state.books.length,
                   itemBuilder: (context, index) {
                     return GestureDetector(
+
                       onTap: () {
+                        final similarBooks = state.books.where((book) {
+                          final currentCategory = state.books[index].volumeInfo?.categories?.first;
+                          final bookCategory = book.volumeInfo?.categories?.first;
+
+                          return bookCategory == currentCategory &&
+                              book.id != state.books[index].id;
+                        }).toList();
+
+
                         Navigator.pushNamed(
                           context,
                           '/BookDetailsView',
                           arguments: {
                             'book': state.books[index],
-                            'books': state.books,
+                            'books': similarBooks,
                           },
                         );
+                        if (similarBooks.isEmpty) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('No similar books found.',
+                                style: TextStyle(
+                                  color: AppColors.secondColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18
+                                ),
+                              ),
+                            ),
+                          );
+                          return;
+                        }
+
                       },
                       child: Container(
                         margin: const EdgeInsets.only(right: 15),
