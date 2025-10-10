@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shimmer_animation/shimmer_animation.dart';
 import '../../../../core/network/api_service.dart';
 import '../../data/repo/home_repo_imple.dart';
 import '../../manager/cubit/get_book_cubit.dart';
@@ -68,7 +69,29 @@ class CategoriesListView extends StatelessWidget {
             );
           } else {
             return SliverToBoxAdapter(
-              child: Center(child: CircularProgressIndicator()),
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                height: 224,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return Shimmer(
+                      duration: const Duration(seconds: 2),
+                      color: Colors.grey.shade300,
+                      colorOpacity: 0.4,
+                      child: Container(
+                        margin: const EdgeInsets.only(right: 15),
+                        width: index == 0 ? 170 : 150,
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade400,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
             );
           }
         },

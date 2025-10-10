@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shimmer_animation/shimmer_animation.dart';
 import '../../../../core/network/api_service.dart';
 import '../../../../core/resoures/app_styels.dart';
 import '../../data/repo/home_repo_imple.dart';
@@ -19,8 +20,9 @@ class BestSellerSliverLists extends StatelessWidget {
       child: BlocBuilder<GetBookCubit, GetBookState>(
         builder: (context, state) {
           if (state is GetBookSuccess) {
-            return SliverList(
-              delegate: SliverChildBuilderDelegate((context, index) {
+            return SliverList.builder(
+              itemCount: state.books.length,
+              itemBuilder: (BuildContext context, int index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(
                     vertical: 10,
@@ -90,15 +92,33 @@ class BestSellerSliverLists extends StatelessWidget {
                     ],
                   ),
                 );
-              }, childCount: state.books.length),
+              },
             );
           } else if (state is GetBookFailure) {
             return SliverToBoxAdapter(
               child: Center(child: Text(state.errorMassage)),
             );
           }
-          return SliverToBoxAdapter(
-            child: Center(child: CircularProgressIndicator()),
+          return SliverList.builder(
+            itemCount: 5,
+            itemBuilder: (context, index) {
+              return Shimmer(
+                duration: const Duration(seconds: 2),
+                color: Colors.grey.shade300,
+                colorOpacity: 0.4,
+                child: Container(
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 10,
+                  ),
+                  height: 120,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade400,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
+              );
+            },
           );
         },
       ),
