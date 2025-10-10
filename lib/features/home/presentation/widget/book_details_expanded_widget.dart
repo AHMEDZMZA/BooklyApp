@@ -28,7 +28,7 @@ class BookDetailsExpandedWidget extends StatelessWidget {
               ),
               child: Text(
                 book.saleInfo?.retailPrice?.amount != null
-                    ? "${book.saleInfo?.retailPrice?.amount} €"
+                    ? "${book.saleInfo?.retailPrice?.amount}€"
                     : "Free",
                 style: AppStyles.textStyle18Bold,
               ),

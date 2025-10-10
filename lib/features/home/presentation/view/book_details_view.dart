@@ -2,6 +2,7 @@ import 'package:books/core/resoures/app_styels.dart';
 import 'package:flutter/material.dart';
 import '../../data/model/book_model.dart';
 import '../widget/book_details_expanded_widget.dart';
+import '../widget/row_check_pdf_and_read_online.dart';
 
 class BookDetailsView extends StatelessWidget {
   const BookDetailsView({super.key});
@@ -80,7 +81,9 @@ class BookDetailsView extends StatelessWidget {
               ),
               const SizedBox(height: 15),
               BookDetailsExpandedWidget(book: book),
-              const SizedBox(height: 60),
+              const SizedBox(height: 15),
+              RowCheckPdfAndReadOnline(book: book),
+              const SizedBox(height: 20),
               Text('You can also like', style: AppStyles.textStyle20Bold),
               const SizedBox(height: 10),
               SizedBox(
