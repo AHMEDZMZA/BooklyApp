@@ -102,23 +102,21 @@ class BestSellerSliverLists extends StatelessWidget {
             );
           }
           return SliverList.builder(
-            itemCount: 5,
             itemBuilder: (context, index) {
-              return Shimmer(
-                duration: const Duration(seconds: 2),
-                color: Colors.grey.shade300,
-                colorOpacity: 0.4,
-                child: Container(
-                  margin: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 10,
-                  ),
-                  height: 120,
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade400,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
+              return Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 10,
                 ),
+                child: Shimmer(
+                  child: Container(
+                    height: 120,
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade400,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                  ),
+                )
               );
             },
           );

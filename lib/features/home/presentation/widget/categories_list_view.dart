@@ -100,7 +100,6 @@ class CategoriesListView extends StatelessWidget {
                 height: 224,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 5,
                   itemBuilder: (context, index) {
                     return Shimmer(
                       duration: const Duration(seconds: 2),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../data/model/book_model.dart';
 import '../widget/book_details_expanded_widget.dart';
 import '../widget/row_check_pdf_and_read_online.dart';
+import '../widget/web_view_open_link.dart';
 
 class BookDetailsView extends StatelessWidget {
   const BookDetailsView({super.key});
@@ -83,6 +84,38 @@ class BookDetailsView extends StatelessWidget {
               BookDetailsExpandedWidget(book: book),
               const SizedBox(height: 15),
               RowCheckPdfAndReadOnline(book: book),
+              const SizedBox(height: 20),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => WebViewOpenLink(book: book),
+                    ),
+                  );
+                },
+                child: Center(
+                  child: Container(
+                    width: double.infinity,
+                    height: 70,
+                    decoration: BoxDecoration(
+                      color: Colors.blue.shade600,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Read Book On App",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
               const SizedBox(height: 20),
               Text('You can also like', style: AppStyles.textStyle20Bold),
               const SizedBox(height: 10),
