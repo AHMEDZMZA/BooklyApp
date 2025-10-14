@@ -1,9 +1,10 @@
+import 'package:books/features/home/data/model/book_model.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/resoures/app_images.dart';
 
 class SliversAppBar extends StatelessWidget {
-  const SliversAppBar({super.key});
-
+  const SliversAppBar({super.key, required this.books});
+  final List<BookModel> books ;
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
@@ -28,7 +29,9 @@ class SliversAppBar extends StatelessWidget {
                 fit: BoxFit.fill,
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/SearchView',arguments: books);
+                },
                 icon: const Icon(Icons.search_rounded, size: 30),
               ),
             ],

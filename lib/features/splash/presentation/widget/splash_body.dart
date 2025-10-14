@@ -14,18 +14,22 @@ class SplashBody extends StatefulWidget {
 class _SplashBodyState extends State<SplashBody> with TickerProviderStateMixin {
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 6), () {
+    super.initState();
+    Future.delayed(const Duration(seconds: 6), () {
+      if (!mounted) return;
       Navigator.pushReplacementNamed(context, '/HomeView');
     });
-    super.initState();
+  }
+
+  @override
+  void dispose() {
+    context.read<AnimationBloc>().close();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      /// Call Function
-      // create: (context) => AnimationBloc()..animate(this), ]
-      /// Call Event
       create: (context) => AnimationBloc()..add(ParameterAnimationEvent(this)),
       child: Center(
         child: BlocBuilder<AnimationBloc, AnimationState>(
