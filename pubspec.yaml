@@ -41,6 +41,9 @@ dependencies:
   shimmer_animation: ^2.2.2
   url_launcher: ^6.3.2
   webview_flutter: ^4.13.0
+  awesome_snackbar_content: ^0.1.6
+  flutter_screenutil: ^5.9.3
+  get_it: ^8.2.0
 
 
 dev_dependencies:

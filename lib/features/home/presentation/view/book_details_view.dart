@@ -1,9 +1,10 @@
 import 'package:books/core/resoures/app_styels.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../data/model/book_model.dart';
-import '../widget/book_details_expanded_widget.dart';
-import '../widget/row_check_pdf_and_read_online.dart';
-import '../widget/web_view_open_link.dart';
+import '../widget/book_details_widgets/book_details_expanded_widget.dart';
+import '../widget/book_details_widgets/read_book_online.dart';
+import '../widget/book_details_widgets/web_view_open_link.dart';
 
 class BookDetailsView extends StatelessWidget {
   const BookDetailsView({super.key});
@@ -15,133 +16,146 @@ class BookDetailsView extends StatelessWidget {
     final BookModel book = args['book'];
     final List<BookModel> books = args['books'];
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.shopping_cart),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0.h,
+          actions: [
+            Padding(
+              padding: EdgeInsets.all(8.0.w),
+              child: IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.shopping_cart),
+              ),
             ),
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Center(
-                child: Container(
-                  width: 180,
-                  height: 250,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    image: DecorationImage(
-                      image: NetworkImage(
-                        book.volumeInfo?.imageLinks?.thumbnail ??
-                            " No Book Similar ",
-                      ),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 25),
-              Center(
-                child: Text(
-                  book.volumeInfo?.title ?? "No Title",
-                  style: const TextStyle(
-                    overflow: TextOverflow.ellipsis,
-                    fontSize: 19,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 8),
-              Center(
-                child: Text(
-                  "${book.volumeInfo?.authors ?? "Unknown Author"}",
-                  style: const TextStyle(fontSize: 16, color: Colors.grey),
-                ),
-              ),
-              const SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.star, color: Colors.amber, size: 18),
-                  const SizedBox(width: 5),
-                  Text("4.8"),
-                  const SizedBox(width: 10),
-                  Text("(${book.volumeInfo?.pageCount ?? 0} reviews)"),
-                ],
-              ),
-              const SizedBox(height: 15),
-              BookDetailsExpandedWidget(book: book),
-              const SizedBox(height: 15),
-              RowCheckPdfAndReadOnline(book: book),
-              const SizedBox(height: 20),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => WebViewOpenLink(book: book),
-                    ),
-                  );
-                },
-                child: Center(
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 10.h),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
                   child: Container(
-                    width: double.infinity,
-                    height: 70,
+                    width: 180.w,
+                    height: 250.h,
                     decoration: BoxDecoration(
-                      color: Colors.blue.shade600,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Center(
-                      child: Text(
-                        "Read Book On App",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                      borderRadius: BorderRadius.circular(15.r),
+                      image: DecorationImage(
+                        image: NetworkImage(
+                          book.volumeInfo?.imageLinks?.thumbnail ??
+                              " No Book Similar ",
                         ),
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 20),
-              Text('You can also like', style: AppStyles.textStyle20Bold),
-              const SizedBox(height: 10),
-              SizedBox(
-                height: 224,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: books.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      margin: const EdgeInsets.only(right: 15),
-                      width: 150,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        image: DecorationImage(
-                          image: NetworkImage(
-                            books[index].volumeInfo!.imageLinks!.thumbnail!,
-                          ),
-                          fit: BoxFit.cover,
-                        ),
+                SizedBox(height: 25.h),
+                Center(
+                  child: Text(
+                    book.volumeInfo?.title ?? "No Title",
+                    style: TextStyle(
+                      overflow: TextOverflow.ellipsis,
+                      fontSize: 19.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 8.h),
+                Center(
+                  child: Text(
+                    "${book.volumeInfo?.authors ?? "Unknown Author"}",
+                    style: TextStyle(fontSize: 16.sp, color: Colors.grey),
+                  ),
+                ),
+                SizedBox(height: 15.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.star, color: Colors.amber, size: 18.sp),
+                    SizedBox(width: 5.w),
+                    Text("4.8"),
+                    SizedBox(width: 10.w),
+                    Text("(${book.volumeInfo?.pageCount ?? 0} reviews)"),
+                  ],
+                ),
+                SizedBox(height: 15.h),
+                BookDetailsExpandedWidget(book: book),
+                SizedBox(height: 15.h),
+                ReadBookOnline(book: book),
+                SizedBox(height: 20.h),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => WebViewOpenLink(book: book),
                       ),
                     );
                   },
+                  child: Center(
+                    child: Container(
+                      width: double.infinity,
+                      height: 70.h,
+                      decoration: BoxDecoration(
+                        color: Colors.blue.shade600,
+                        borderRadius: BorderRadius.circular(20.r),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Read Book On App",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ],
+                SizedBox(height: 20.h),
+                Text('You can also like', style: AppStyles.textStyle20Bold),
+                SizedBox(height: 10.h),
+                SizedBox(
+                  height: 224.h,
+                  child: books.isEmpty
+                      ? Center(
+                    child: Text(
+                      'No books similar',
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  )
+                      : ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: books.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin: EdgeInsets.only(right: 15.r),
+                        width: 150.w,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15.r),
+                          image: DecorationImage(
+                            image: NetworkImage(
+                              books[index].volumeInfo!.imageLinks!.thumbnail!,
+                            ),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

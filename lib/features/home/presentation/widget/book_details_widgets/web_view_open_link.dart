@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import '../../data/model/book_model.dart';
+import '../../../data/model/book_model.dart';
 
 class WebViewOpenLink extends StatelessWidget {
   const WebViewOpenLink({super.key, required this.book});
@@ -24,7 +25,7 @@ class WebViewOpenLink extends StatelessWidget {
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
-            fontSize: 18,
+            fontSize: 18.sp,
           ),
         ),
         duration: const Duration(seconds: 2),

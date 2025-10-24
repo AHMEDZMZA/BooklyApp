@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../../core/resoures/app_colors.dart';
-import '../../../../core/resoures/app_styels.dart';
-import '../../data/model/book_model.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/resoures/app_colors.dart';
+import '../../../../../core/resoures/app_styels.dart';
+import '../../../data/model/book_model.dart';
 
 class BookDetailsExpandedWidget extends StatelessWidget {
   const BookDetailsExpandedWidget({super.key, required this.book});
@@ -14,15 +15,15 @@ class BookDetailsExpandedWidget extends StatelessWidget {
       children: [
         Expanded(
           child: SizedBox(
-            height: 48,
+            height: 60.h,
             child: TextButton(
               onPressed: () {},
               style: TextButton.styleFrom(
                 backgroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(12),
-                    bottomLeft: Radius.circular(12),
+                    topLeft: Radius.circular(12.r),
+                    bottomLeft: Radius.circular(12.r),
                   ),
                 ),
               ),
@@ -37,15 +38,15 @@ class BookDetailsExpandedWidget extends StatelessWidget {
         ),
         Expanded(
           child: SizedBox(
-            height: 48,
+            height: 60.h,
             child: TextButton(
               onPressed: () {},
               style: TextButton.styleFrom(
                 backgroundColor: AppColors.secondColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(12),
-                    bottomRight: Radius.circular(12),
+                    topRight: Radius.circular(12.r),
+                    bottomRight: Radius.circular(12.r),
                   ),
                 ),
               ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/di/service_locator.dart';
 import '../../../../core/resoures/app_images.dart';
 import '../../../../core/resoures/app_styels.dart';
 import '../../manager/bloc/animation_bloc.dart';
@@ -30,7 +32,11 @@ class _SplashBodyState extends State<SplashBody> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AnimationBloc()..add(ParameterAnimationEvent(this)),
+      create:
+          (context) =>
+              getIt<AnimationBloc>()..add(ParameterAnimationEvent(this)),
+
+      // create: (context) => AnimationBloc()..add(ParameterAnimationEvent(this)),
       child: Center(
         child: BlocBuilder<AnimationBloc, AnimationState>(
           builder: (context, state) {
@@ -42,7 +48,7 @@ class _SplashBodyState extends State<SplashBody> with TickerProviderStateMixin {
                     position: state.imageAnimation,
                     child: Image.asset(AppImages.logoImage, fit: BoxFit.cover),
                   ),
-                  const SizedBox(height: 15),
+                  SizedBox(height: 15.h),
                   SlideTransition(
                     position: state.textAnimation,
                     child: Text(

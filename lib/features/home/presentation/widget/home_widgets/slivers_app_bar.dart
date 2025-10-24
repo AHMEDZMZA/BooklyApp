@@ -1,36 +1,40 @@
 import 'package:books/features/home/data/model/book_model.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/resoures/app_images.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/resoures/app_images.dart';
 
 class SliversAppBar extends StatelessWidget {
   const SliversAppBar({super.key, required this.books});
-  final List<BookModel> books ;
+
+  final List<BookModel> books;
+
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
       pinned: true,
-      floating: false,
+
+      /// لو عندك قائمة طويلة، الـ AppBar هيفضل ثابت فوق ومش هيتحرك.
       snap: false,
+
+      /// لو snap: true ➜ الـ AppBar “ينط” أو “يظهر فجأة” بشكل سلس لما المستخدم يبدأ سحب خفيف لأعلى.
       elevation: 0,
-      automaticallyImplyLeading: false,
       backgroundColor: Colors.transparent,
       surfaceTintColor: Colors.grey,
       flexibleSpace: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
         child: SafeArea(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Image.asset(
                 AppImages.logoImage,
-                height: 30,
-                width: 75,
-                filterQuality: FilterQuality.low,
+                height: 30.h,
+                width: 75.w,
                 fit: BoxFit.fill,
               ),
               IconButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/SearchView',arguments: books);
+                  Navigator.pushNamed(context, '/SearchView', arguments: books);
                 },
                 icon: const Icon(Icons.search_rounded, size: 30),
               ),

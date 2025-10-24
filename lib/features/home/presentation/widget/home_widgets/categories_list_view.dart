@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
-import '../../../../core/network/api_service.dart';
-import '../../../../core/resoures/app_colors.dart';
-import '../../data/repo/home_repo_imple.dart';
-import '../../manager/cubit/get_book_cubit.dart';
+import '../../../../../core/network/api_service.dart';
+import '../../../data/repo/home_repo_imple.dart';
+import '../../../manager/cubit/get_book_cubit.dart';
 
 class CategoriesListView extends StatelessWidget {
   const CategoriesListView({super.key, required this.index});
@@ -24,8 +24,8 @@ class CategoriesListView extends StatelessWidget {
           if (state is GetBookSuccess) {
             return SliverToBoxAdapter(
               child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                height: 224,
+                margin:  EdgeInsets.symmetric(horizontal: 20.w),
+                height: 224.h,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: state.books.length,
@@ -50,21 +50,6 @@ class CategoriesListView extends StatelessWidget {
                             'books': similarBooks,
                           },
                         );
-                        if (similarBooks.isEmpty) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('No similar books found.',
-                                style: TextStyle(
-                                  color: AppColors.secondColor,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18
-                                ),
-                              ),
-                            ),
-                          );
-                          return;
-                        }
-
                       },
                       child: Container(
                         margin: const EdgeInsets.only(right: 15),
