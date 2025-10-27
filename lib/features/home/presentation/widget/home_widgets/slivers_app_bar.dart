@@ -2,6 +2,7 @@ import 'package:books/features/home/data/model/book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/resoures/app_images.dart';
+import '../../../../../core/routing/routes.dart';
 
 class SliversAppBar extends StatelessWidget {
   const SliversAppBar({super.key, required this.books});
@@ -34,7 +35,7 @@ class SliversAppBar extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/SearchView', arguments: books);
+                  Navigator.pushNamed(context, Routes.searchView, arguments: books);
                 },
                 icon: const Icon(Icons.search_rounded, size: 30),
               ),

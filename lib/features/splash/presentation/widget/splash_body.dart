@@ -1,7 +1,10 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
+import 'package:books/core/routing/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/di/service_locator.dart';
+import '../../../../core/helpers/show_snack.dart';
 import '../../../../core/resoures/app_images.dart';
 import '../../../../core/resoures/app_styels.dart';
 import '../../manager/bloc/animation_bloc.dart';
@@ -19,7 +22,13 @@ class _SplashBodyState extends State<SplashBody> with TickerProviderStateMixin {
     super.initState();
     Future.delayed(const Duration(seconds: 6), () {
       if (!mounted) return;
-      Navigator.pushReplacementNamed(context, '/HomeView');
+      Navigator.pushReplacementNamed(context, Routes.homeView);
+      showSnack(
+        context,
+        "Welcome to Books Library",
+        "Enjoy your reading journey!",
+        ContentType.success,
+      );
     });
   }
 
