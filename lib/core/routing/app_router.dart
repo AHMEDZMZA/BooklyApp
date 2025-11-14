@@ -1,4 +1,6 @@
 import 'package:books/core/routing/routes.dart';
+import 'package:books/features/Auth/precentation/view/login_view.dart';
+import 'package:books/features/Auth/precentation/view/register_view.dart';
 import 'package:books/features/home/presentation/view/book_details_view.dart';
 import 'package:books/features/home/presentation/view/home_view.dart';
 import 'package:books/features/home/presentation/view/search_view.dart';
@@ -28,6 +30,11 @@ class AppRouter {
           builder: (_) => const SearchView(),
           settings: RouteSettings(arguments: args),
         );
+      case Routes.loginView:
+        return MaterialPageRoute(builder: (_) => const LoginView());
+
+      case Routes.registerView:
+        return MaterialPageRoute(builder: (_) => const RegisterView());
 
       default:
         return null;

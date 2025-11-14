@@ -57,9 +57,7 @@ class HomeView extends StatelessWidget {
                   ),
                 );
               }
-              return Center(
-                child: Text("Please wait...", style: AppStyles.textStyle16W400),
-              );
+              return Center();
             },
           ),
         ),

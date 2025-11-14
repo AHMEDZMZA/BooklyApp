@@ -3,4 +3,6 @@ abstract class Routes {
   static const String homeView = '/HomeView';
   static const String bookDetailsView = '/BookDetailsView';
   static const String searchView = '/SearchView';
+  static const String loginView = '/LoginView';
+  static const String registerView = '/RegisterView';
 }
